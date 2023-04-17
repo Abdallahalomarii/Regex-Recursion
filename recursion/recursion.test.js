@@ -2,7 +2,16 @@
 
 function division(number, dividedBy) {
     // Write you logic here.
-    return;
+
+    if (number == 0 || dividedBy == 0) {
+        return 0;
+    }
+    else {
+
+        return (1 + division(number - dividedBy, dividedBy));
+
+
+    }
 }
 
 /* Write a function that implement Math.pow(x,n) but using recursion
@@ -13,7 +22,13 @@ pow(2,4) = 16
 
 function pow(x, n) {
     // Write you logic here.
-    return;
+    if (n == 0 || x == 0) {
+        return 1;
+    }
+    else {
+        return (x * pow(x, n - 1));
+    }
+
 }
 
 /* The Fibonacci Series is a numeric series starting with the integers 0 and 1. In this series,
@@ -25,9 +40,18 @@ Write a function that take n as parameter and return the nth element in the Fibo
 
 Example: n = 4 ==> 3, n= 0 ==> 0, n = 3 ==> 2 */
 
+// 0 1 2 3 4 5 6 7 
+// 0 1 1 2 3 5 8 13
+
 function fibonacci(n) {
     // Write you logic here.
-    return;
+    if (n == 0 || n == 1) {
+        return n;
+    }
+
+    else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
 }
 
 /* Optional 
@@ -50,8 +74,30 @@ Output: "213"  */
 
 function permutations(n, k) {
     let arr = [];
-    // Write you logic here. 
-    return arr
+    if (k == 0)
+    {
+        return [];
+    }
+    for (let i=1;i<=k;i++)
+      {
+        arr.push(i);
+      }
+      if ( n === 1) {
+          return [[1]];
+      }
+      else {
+          arr = permutations(n - 1);
+          const result = [];
+          arr.forEach(arr => {
+              for (let i = arr.length; i >= 0; i--) {
+                  const perm = arr.slice(0, i) + n + arr.slice(i);
+                  result.push(perm);
+              }
+          });
+          return result.sort();
+      }
+    
+
 };
 
 
